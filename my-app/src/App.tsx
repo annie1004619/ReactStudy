@@ -3,21 +3,22 @@ import UserList from "./UserList";
 //import SignUp from "./SignUp";
 //import Counter from "./Counter";
 //import Hello from "./Hello";
-//import PasswordConfirm from "./passwordConfirm";
+import CustomPassword from "./CustomPassword";
+
 
 function App() {
-  const[toggle, setToggle] = useState(true);
-  const ToggleModeChange = () =>setToggle(prev=>!prev);
+ /* const[toggle, setToggle] = useState(true);
+  const ToggleModeChange = () =>setToggle(prev=>!prev);*/
 
   return (
-     //<PasswordConfirm />
+     <CustomPassword />
    // <Hello name="김지원" color="red" />
     //  <Counter />
      // <SignUp />
-   <div>
+  /* <div>
      <button onClick={ToggleModeChange}>toggle</button>
      {toggle ? <UserList/> : <div>UserList가 없습니다 </div>}
-   </div>
+   </div>*/
   );
 }
 
