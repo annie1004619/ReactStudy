@@ -1,17 +1,34 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useCallback, useState } from "react";
+import {
+  MyDiv,
+  MyH1,
+  MyUl,
+  MyLi,
+  InputDiv,
+  MyInput,
+  MyLabel,
+  SubmitInput,
+} from "./Loginstyle";
 
-const LoginPage: any = (props: any) => {
+interface LoginPageProps {
+  onLogIn: (userId: string) => void;
+}
+const LoginPage: React.FC<LoginPageProps> = ({ onLogIn }) => {
   const [id, setId] = useState("");
   const [pwd, setPwd] = useState("");
 
-  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeId = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const blank = /\s/;
+    if (blank.test(e.currentTarget.value) === true) {
+      alert("공백은 사용할 수 없습니다.");
+      return;
+    }
     setId(e.currentTarget.value);
-  };
+  }, []);
 
-  const onChangePwd = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangePwd = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setPwd(e.currentTarget.value);
-  };
+  }, []);
 
   const onSubmit = () => {
     if (id === "") {
@@ -19,9 +36,7 @@ const LoginPage: any = (props: any) => {
     } else if (pwd === "") {
       alert("비밀번호를 입력해주세요");
     } else if (pwd === "1234") {
-      alert(`${id} 님 환영합니다`);
-      props.setMode("MAIN");
-      props.setData(id);
+      onLogIn(id);
     } else if (pwd !== "1234") {
       alert("비밀번호가 틀렸습니다.");
     }
@@ -64,58 +79,5 @@ const LoginPage: any = (props: any) => {
     </MyDiv>
   );
 };
-
-const MyDiv = styled.div`
-  padding: 0px;
-  text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-const MyH1 = styled.h1`
-  color: purple;
-  font-size: 6vw;
-  padding: 0px;
-`;
-const MyUl = styled.ul`
-  list-style: none;
-  padding: 0px;
-`;
-const MyLi = styled.li`
-  width: 28vw;
-  display: flex;
-  align-items: center;
-  font-size: 1.6vw;
-   margin 0 auto;
-`;
-const InputDiv = styled.div`
-  width: 17vw;
-`;
-const MyInput = styled.input`
-  :focus {
-    outline: none;
-  }
-  border: none;
-  ::placeholder {
-    color: gray;
-    font-size: 1vw;
-  }
-`;
-
-const MyLabel = styled.label`
-  margin-right: 1vw;
-  height: 5vh;
-`;
-const SubmitInput = styled.input`
-  background-color: purple;
-  border: none;
-  color: white;
-  width: 10vw;
-  height: 5vh;
-  text-decoration: none;
-  text-align: center;
-  font-size: 1vw;
-`;
 
 export default LoginPage;
