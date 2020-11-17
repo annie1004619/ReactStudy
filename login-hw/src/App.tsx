@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import Login from "./Login";
 import LoginPage from "./loginPage";
 import MainPage from "./mainPage";
 //import LoginWithInputs from "./LoginWithInputs";
 
-function App(props: any): any {
+function App(props: any): JSX.Element {
   const [mode, setMode] = useState("LOGIN");
   const [data, setData] = useState("");
 
-  if (mode === "LOGIN")
-    return <LoginPage setMode={setMode} setData={setData} />;
-  else if (mode === "MAIN") return <MainPage setMode={setMode} props={data} />;
+  if (mode === "MAIN") return <MainPage setMode={setMode} props={data} />;
+
+  return <LoginPage setMode={setMode} setData={setData} />;
 }
 
 export default App;

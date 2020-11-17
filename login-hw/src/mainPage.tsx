@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const MainPage = (props: any) => {
+const MainPage: any = (props: any) => {
   const onclick = () => {
     alert("로그아웃 합니다.");
 
