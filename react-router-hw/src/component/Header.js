@@ -1,13 +1,11 @@
 import React from "react";
 import { MainUl, LogoLi, NavDiv, MainLi, SubmitInput } from "./HeaderStyle";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { useUserDispatch, useUserState } from "../context/UserContext";
 
-const Header = () => {
+const Header = ({ location }) => {
   const { user } = useUserState();
   const dispatch = useUserDispatch();
-
-  console.log(user);
 
   const onLogOut = () => {
     alert("로그아웃 되었습니다.");
@@ -23,20 +21,32 @@ const Header = () => {
       {user ? (
         <NavDiv>
           <MainLi>{user.userId}님</MainLi>
+          {location.pathname !== "/mypage" && (
+            <MainLi>
+              <Link to="/mypage">
+                <SubmitInput type="submit" value="마이 페이지" />
+              </Link>
+            </MainLi>
+          )}
           <MainLi>
-            <Link to="/mypage">
-              <SubmitInput type="submit" value="마이 페이지" />
+            <Link to="/">
+              <SubmitInput type="submit" value="로그아웃" onClick={onLogOut} />
             </Link>
           </MainLi>
+        </NavDiv>
+      ) : location.pathname === "/signup" ? (
+        <NavDiv>
           <MainLi>
-            <SubmitInput type="submit" value="로그아웃" onClick={onLogOut} />
+            <Link to="/">
+              <SubmitInput type="submit" value="로그인" />
+            </Link>
           </MainLi>
         </NavDiv>
       ) : (
         <NavDiv>
           <MainLi>
-            <Link to="/login">
-              <SubmitInput type="submit" value="로그인" />
+            <Link to="/signup">
+              <SubmitInput type="submit" value="회원가입" />
             </Link>
           </MainLi>
         </NavDiv>
@@ -45,4 +55,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 export const Title = styled.h1`
   color: purple;
-  font-size: 6vw;
+  font-size: 4vw;
   padding: 0px;
 `;
 export const InputContainer = styled.ul`
@@ -46,7 +46,7 @@ export const LoginBtn = styled.input`
   background-color: purple;
   border: none;
   color: white;
-  width: 10vw;
+  width: 7vw;
   height: 5vh;
   text-decoration: none;
   text-align: center;

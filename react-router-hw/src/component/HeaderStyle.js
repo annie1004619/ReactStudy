@@ -8,6 +8,7 @@ export const MainUl = styled.ul`
 `;
 export const NavDiv = styled.div`
   display: flex;
+  align-items: center;
 `;
 export const LogoLi = styled.li`
   color: purple;

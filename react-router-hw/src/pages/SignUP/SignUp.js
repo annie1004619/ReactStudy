@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
 import useInput from "../../hooks/useInput";
 import {
   Container,
@@ -11,7 +10,7 @@ import {
   Input,
   ErrorMessage,
 } from "./SignUpStyle";
-import { useUserDispatch } from "../../context/UserContext";
+import { useUserDispatch, useUserState } from "../../context/UserContext";
 
 const SignUp = ({ history }) => {
   const [id, onChangeId, setId] = useInput("");
@@ -23,7 +22,7 @@ const SignUp = ({ history }) => {
     confirmPwdError: "",
   });
   const { idError, pwdError, confirmPwdError } = errorMessage;
-
+  const { userList } = useUserState();
   const dispatch = useUserDispatch();
 
   const inputRegexs = {
@@ -52,12 +51,19 @@ const SignUp = ({ history }) => {
   }, [setId, setPwd, setConfirmPwd]);
   /* 아이디 체크 */
   useEffect(() => {
-    if (validationCheck(id, inputRegexs.idReg) || id === "") {
+    const findUser = userList.find((user) => user.id === id);
+
+    if ((!findUser && validationCheck(id, inputRegexs.idReg)) || id === "") {
       setErrorMessage({
         ...errorMessage,
         idError: "",
       });
-    } else {
+    } else if (findUser !== undefined) {
+      setErrorMessage({
+        ...errorMessage,
+        idError: "이미 가입된 아이디입니다.",
+      });
+    } else if (!validationCheck(id, inputRegexs.idReg)) {
       setErrorMessage({
         ...errorMessage,
         idError: "아이디는 영문 또는 숫자로 5~15자 이여야 합니다.",
@@ -167,9 +173,6 @@ const SignUp = ({ history }) => {
         </InputItem>
       </InputContainer>
       <Btn type="submit" value="가입" onClick={onSignUp} />
-      <Link to="/">
-        <Btn type="submit" value="로그인" />
-      </Link>
     </Container>
   );
 };

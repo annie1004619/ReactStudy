@@ -17,6 +17,7 @@ const reducer = (state, action) => {
         ...state,
         user: {
           userId: action.userId,
+          userPwd: action.userPwd,
         },
       };
     case "LOGOUT":
@@ -24,6 +25,17 @@ const reducer = (state, action) => {
         ...state,
         user: null,
       };
+    case "MODIFY":
+      state.userList.splice(action.index, 1, {
+        id: action.userId,
+        pwd: action.userPwd,
+      });
+      return {
+        ...state,
+        user: { userId: action.userId, userPwd: action.userPwd },
+        userList: state.userList,
+      };
+
     default:
       return state;
   }

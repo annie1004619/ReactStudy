@@ -10,17 +10,15 @@ import {
   InputLabel,
   LoginBtn,
 } from "./LoginStyle";
-import { Link } from "react-router-dom";
 import { useUserDispatch, useUserState } from "../../context/UserContext";
 
 const Login = ({ history }) => {
   const [id, onChangeId, setId] = useInput("");
   const [pwd, onChangePwd, setPwd] = useInput("");
 
-  const { userList, user } = useUserState();
+  const { userList } = useUserState();
   const dispatch = useUserDispatch();
-  console.log(userList);
-  console.log(user);
+
   const onReset = useCallback(() => {
     setId("");
     setPwd("");
@@ -46,6 +44,7 @@ const Login = ({ history }) => {
     dispatch({
       type: "LOGIN",
       userId: id,
+      userPwd: pwd,
     });
 
     onReset();
@@ -74,6 +73,7 @@ const Login = ({ history }) => {
             <InputDiv>
               <MyInput
                 id="user_pwd"
+                type="password"
                 value={pwd}
                 onChange={onChangePwd}
                 placeholder="비밀번호를 입력해주세요"
@@ -85,9 +85,6 @@ const Login = ({ history }) => {
         </InputContainer>
       </form>
       <LoginBtn type="submit" value="로그인" onClick={onLogin} />
-      <Link to="/signup">
-        <LoginBtn type="submit" value="회원가입" />
-      </Link>
     </Container>
   );
 };
