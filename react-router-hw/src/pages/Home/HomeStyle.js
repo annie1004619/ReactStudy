@@ -28,7 +28,7 @@ export const SubmitInput = styled.input`
   background-color: purple;
   border: none;
   color: white;
-  width: 10vw;
+  width: 8vw;
   height: 5vh;
   text-decoration: none;
   text-align: center;

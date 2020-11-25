@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MyDiv = styled.div`
+export const Container = styled.div`
   padding: 0px;
   text-align: center;
   height: 100vh;
@@ -8,16 +8,16 @@ export const MyDiv = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
-export const MyH1 = styled.h1`
+export const Title = styled.h1`
   color: purple;
   font-size: 6vw;
   padding: 0px;
 `;
-export const MyUl = styled.ul`
+export const InputContainer = styled.ul`
   list-style: none;
   padding: 0px;
 `;
-export const MyLi = styled.li`
+export const InputItem = styled.li`
   width: 28vw;
   display: flex;
   align-items: center;
@@ -38,11 +38,11 @@ export const MyInput = styled.input`
   }
 `;
 
-export const MyLabel = styled.label`
+export const InputLabel = styled.label`
   margin-right: 1vw;
   height: 5vh;
 `;
-export const SubmitInput = styled.input`
+export const LoginBtn = styled.input`
   background-color: purple;
   border: none;
   color: white;
@@ -51,4 +51,5 @@ export const SubmitInput = styled.input`
   text-decoration: none;
   text-align: center;
   font-size: 1vw;
+  margin: 0vh auto 1.5vh;
 `;
