@@ -22,6 +22,7 @@ const SignUp = ({ history }) => {
     confirmPwdError: "",
   });
   const { idError, pwdError, confirmPwdError } = errorMessage;
+  const [color, setColor] = useState("lightgray");
   const { userList } = useUserState();
   const dispatch = useUserDispatch();
 
@@ -70,7 +71,7 @@ const SignUp = ({ history }) => {
       });
     }
   }, [id]);
-
+  console.log(idError);
   /* 비밀번호 체크 */
   useEffect(() => {
     if (validationCheck(pwd, inputRegexs.pwdReg) || pwd === "") {
@@ -100,6 +101,24 @@ const SignUp = ({ history }) => {
       });
     }
   }, [confirmPwd]);
+
+  /* error !!! */
+  /* 모든 입력창이 맞게 입력되었다면 가입 버튼 색을 보라색으로 변경 */
+  useEffect(() => {
+    if (
+      !idError &&
+      !pwdError &&
+      confirmPwd === pwd &&
+      id !== "" &&
+      pwd !== "" &&
+      confirmPwd !== ""
+    ) {
+      setColor("purple");
+    } else {
+      setColor("lightgray");
+    }
+    console.log(idError);
+  }, [id, pwd, confirmPwd]);
 
   const onSignUp = () => {
     if (!id || !pwd || !confirmPwd) {
@@ -172,7 +191,12 @@ const SignUp = ({ history }) => {
           )}
         </InputItem>
       </InputContainer>
-      <Btn type="submit" value="가입" onClick={onSignUp} />
+      <Btn
+        type="submit"
+        value="가입"
+        onClick={onSignUp}
+        style={{ backgroundColor: color }}
+      />
     </Container>
   );
 };

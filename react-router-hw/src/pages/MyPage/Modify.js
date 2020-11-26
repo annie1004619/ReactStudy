@@ -136,17 +136,32 @@ const Modify = ({ history }) => {
       <UserInfo>
         <InfoItem>
           <InfoTitle>아이디 : </InfoTitle>
-          <Value type="text" value={id} onChange={onChangeId} />
+          <Value
+            type="text"
+            value={id}
+            onChange={onChangeId}
+            placeholder="바꾸실 아이디를 입력해주세요"
+          />
         </InfoItem>
         {idError ? <ErrorMessage>{idError}</ErrorMessage> : ""}
         <InfoItem>
           <InfoTitle>현재 비밀번호 : </InfoTitle>
-          <Value type="password" value={nowPwd} onChange={onChangeNowPwd} />
+          <Value
+            type="password"
+            value={nowPwd}
+            onChange={onChangeNowPwd}
+            placeholder="현재 비밀번호를 입력해주세요"
+          />
         </InfoItem>
         {nowPwdError ? <ErrorMessage>{nowPwdError}</ErrorMessage> : ""}
         <InfoItem>
           <InfoTitle>새 비밀번호 : </InfoTitle>
-          <Value type="password" value={pwd} onChange={onChangePwd} />
+          <Value
+            type="password"
+            value={pwd}
+            onChange={onChangePwd}
+            placeholder="새 비밀번호를 입력해주세요"
+          />
         </InfoItem>
         {pwdError ? <ErrorMessage>{pwdError}</ErrorMessage> : ""}
         <InfoItem>
@@ -155,6 +170,7 @@ const Modify = ({ history }) => {
             type="password"
             value={confirmPwd}
             onChange={onChangeConfirmPwd}
+            placeholder="새 비밀번호 확인을 입력해주세요"
           />
         </InfoItem>
         {confirmPwdError ? <ErrorMessage>{confirmPwdError}</ErrorMessage> : ""}
@@ -194,7 +210,10 @@ const InfoTitle = styled.div`
   margin-right: 1vw;
 `;
 const Value = styled.input`
-  width: 10vw;
+  width: 15vw;
+  ::placeholder {
+    font-size: 0.5vw;
+  }
 `;
 const Btn = styled.input`
   background-color: purple;

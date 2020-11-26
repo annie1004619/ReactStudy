@@ -16,7 +16,6 @@ export const Title = styled.h1`
 `;
 
 export const Btn = styled.input`
-  background-color: purple;
   border: none;
   color: white;
   width: 7vw;
