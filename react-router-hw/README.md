@@ -29,19 +29,19 @@
 
 ### 페이지
 
-**로그인 페이지**
+- 로그인 페이지
 ![](https://images.velog.io/images/annie1004619/post/459cc164-1d5e-4a09-8c1d-9f97f20236ce/image.png)
 
-**회원가입 페이지**
+- 회원가입 페이지
 ![](https://images.velog.io/images/annie1004619/post/41eb5d6f-0b66-4e68-bec9-3090e2b741fe/image.png)
 
-**메인 페이지**
+- 메인 페이지
  ![](https://images.velog.io/images/annie1004619/post/9eb7c5cd-b44b-4281-bc46-ae6f4d02458c/purplecode.png)
  
- **마이 페이지**
+ - 마이 페이지
  ![](https://images.velog.io/images/annie1004619/post/27f2bfa6-2408-4505-a148-f8e092468a62/image.png)
  
- **정보 수정 페이지**
+ - 정보 수정 페이지
  ![](https://images.velog.io/images/annie1004619/post/0a2e7176-1818-4dfb-a23b-fbc59092cbfc/image.png)
  
  
