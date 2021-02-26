@@ -14,6 +14,15 @@ export const Logo = styled(Link)`
   text-decoration: none;
 `;
 export const HeaderContents = styled.div`
+  padding: 0px 1rem;
   display: flex;
+  height: 100%;
+  align-items: center;
   justify-content: space-between;
+`;
+export const IconContainer = styled.div`
+  vertical-align: middle;
+  display: flex;
+  width: 60px;
+  justify-content: space-around;
 `;
