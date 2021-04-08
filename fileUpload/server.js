@@ -43,7 +43,7 @@ const resolvers = {
       const randomName = generateRandomString(12) + ext;
 
       const stream = createReadStream();
-      const pathName = path.join(__dirname, `/public/images/${filename}`);
+      const pathName = path.join(__dirname, `/public/images/${randomName}`);
       await stream.pipe(fs.createWriteStream(pathName));
 
       return {
